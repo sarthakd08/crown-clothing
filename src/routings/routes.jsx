@@ -13,10 +13,10 @@ const Routes = () => {
     return (
         <Switch>
             {routeConfig.map(({path, name, component, exact}) => (
-                <Route path={path} component={component} exact={exact} />
+                <Route key={name} path={path} component={component} exact={exact} />
             ))}
         </Switch>
     )
 }
 
-export default Routes
+export default Routes;

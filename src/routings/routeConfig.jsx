@@ -1,5 +1,7 @@
 import React from 'react';
 import Homepage from '../pages/homepage/hompage.component';
+import ShopPage from '../pages/shop/shop.component';
+import SignInAndSignUpPage from '../pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 
 const Route1 = (props) => {
     console.log('Route1 props', props);
@@ -35,12 +37,19 @@ const routesConfig = [
       doNeedStateEngine: true,
     },
     {
-        path: '/hats',
-        component: hats,
-        exact: true,
-        name: 'hats',
-        doNeedStateEngine: true,
-      }
+      path: '/shop',
+      component: ShopPage,
+      exact: true,
+      name: 'shop',
+      doNeedStateEngine: true,
+    },
+    {
+      path: '/signin',
+      component: SignInAndSignUpPage,
+      exact: true,
+      name: 'signin',
+      doNeedStateEngine: true,
+    }
 ]
 
 export default routesConfig;

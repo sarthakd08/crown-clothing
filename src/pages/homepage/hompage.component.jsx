@@ -8,7 +8,7 @@ const HomePage = (props) => {
   return (
     <div className='homepage'>
       <h1>Welcome to my Homepage</h1>
-      <button onClick={() => props.history.push('/route1')}>Navigate to Route1</button>
+      {/* <button onClick={() => props.history.push('/shop')}>Navigate to Shop page</button> */}
       <Directory />
     </div>
   )
