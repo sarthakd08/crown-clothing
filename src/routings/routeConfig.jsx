@@ -24,31 +24,35 @@ const hats = (props) => {
 const routesConfig = [
     {
       path: '/',
-      component: Homepage,
+      Component: Homepage,
       exact: true,
       name: 'HOMEPAGE',
       doNeedStateEngine: false,
+      showOnlyToLoggedInUser: false,
     },
     {
       path: '/route1',
-      component: Route1,
+      Component: Route1,
       exact: true,
       name: 'route1',
       doNeedStateEngine: true,
+      showOnlyToLoggedInUser: false,
     },
     {
       path: '/shop',
-      component: ShopPage,
+      Component: ShopPage,
       exact: true,
       name: 'shop',
       doNeedStateEngine: true,
+      showOnlyToLoggedInUser: false,
     },
     {
       path: '/signin',
-      component: SignInAndSignUpPage,
+      Component: SignInAndSignUpPage,
       exact: true,
       name: 'signin',
       doNeedStateEngine: true,
+      showOnlyToLoggedInUser: true,
     }
 ]
 

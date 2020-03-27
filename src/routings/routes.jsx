@@ -9,11 +9,12 @@ import routeConfig from './routeConfig';
 //     </div>
 //   )
 
-const Routes = () => {
+const Routes = (props) => {
+    console.log('ROUTE Props', props);
     return (
         <Switch>
-            {routeConfig.map(({path, name, component, exact}) => (
-                <Route key={name} path={path} component={component} exact={exact} />
+            {routeConfig.map(({path, name, Component, exact, showOnlyToLoggedInUser}) => (
+                <Route key={name} path={path} exact={exact} render={() => ((showOnlyToLoggedInUser && props.isCurrentUser) ? (<Redirect to='/' />) : (<Component />) )} />  //using render() instaead of component={component} here
             ))}
         </Switch>
     )
