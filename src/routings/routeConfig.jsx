@@ -2,6 +2,7 @@ import React from 'react';
 import Homepage from '../pages/homepage/hompage.component';
 import ShopPage from '../pages/shop/shop.component';
 import SignInAndSignUpPage from '../pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import CheckoutPage from '../pages/checkout/checkout.component';
 
 const Route1 = (props) => {
     console.log('Route1 props', props);
@@ -53,6 +54,14 @@ const routesConfig = [
       name: 'signin',
       doNeedStateEngine: true,
       showOnlyToLoggedInUser: true,
+    },
+    {
+      path: '/checkout',
+      Component: CheckoutPage,
+      exact: true,
+      name: 'signin',
+      doNeedStateEngine: true,
+      showOnlyToLoggedInUser: false,
     }
 ]
 

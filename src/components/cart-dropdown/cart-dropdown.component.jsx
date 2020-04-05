@@ -2,11 +2,13 @@ import React from 'react';
 import Button from '../Button/button.compoent';
 import './cart-dropdown.style.scss';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import CartItem from '../cart-item/cart-item.component';
 import {ReactComponent as CartIconImage} from '../../assets/shopping_bag.svg';
 import {selectItemsCart} from '../../redux/cart/cart.selectors';
+import {toggleCartDropdown} from '../../redux/cart/cart.actions';
 
-const CartDropdown = ({cartItems}) => {
+const CartDropdown = ({cartItems, history, dispatch, toggleCartDropdown}) => {
 
     return (
         <div className="cart-dropdown">
@@ -16,7 +18,11 @@ const CartDropdown = ({cartItems}) => {
                         <div className="cart-items">
                             {cartItems.map(cartItem => (<CartItem key={cartItem.id} item={cartItem} />))}
                         </div>
-                        <Button>Go to Checkout</Button>
+                        <Button onClick={() => {
+                            history.push('/checkout');
+                            toggleCartDropdown();
+                        }}
+                        >Go to Checkout</Button>
                     </div>
                 : <div className="cart-empty">
                     <CartIconImage className="cart-icon-image" />
@@ -34,4 +40,8 @@ const mapStateToProps = (state) => ({
     cartItems: selectItemsCart(state), // Using selecter here for memoisation instead of doing it like in above line
 })
 
-export default connect(mapStateToProps, null)(CartDropdown);
+const mapDispatchToProps = (dispatch) => ({
+    toggleCartDropdown : () => dispatch(toggleCartDropdown())
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CartDropdown));
