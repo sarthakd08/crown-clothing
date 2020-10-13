@@ -42,7 +42,7 @@ const routesConfig = [
     {
       path: '/shop',
       Component: ShopPage,
-      exact: true,
+      exact: false,
       name: 'shop',
       doNeedStateEngine: true,
       showOnlyToLoggedInUser: false,
