@@ -1,11 +1,13 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
+import axios from 'axios';
+import Layout from '../../views/Layout/Layout';
 import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
 import CollectionPage from '../collections/collection.component';
 import useFetchJobs from '../../hooks/useFetchJobs';
 import useMakeMultipleApiRequests from '../../hooks/useMakeMultipleAPIRequests';
-import axios from 'axios';
+import useGetQuery from '../../hooks/useGetQuery';
 
 const multipleReqData = [{url: 'https://dog.ceo/api/breed/husky/images/random', cb: null}, {url: 'https://dog.ceo/api/breed/aki/images/random', cb: null}, {url: 'https://dog.ceo/api/breed/pitbull/images/random', cb: null}, {url: 'https://dog.ceo/api/breed/akita/images/random', cb: null}]
 
@@ -64,13 +66,18 @@ const ShopPage = ({match}) => {
     // /* HOOK for multiRequest one after another */
     // const multRequest = useMakeMultipleApiRequests(multipleReqData)
     // console.log('multRequest', multRequest);
+    const { data } = useGetQuery({url: 'https://dog.ceo/api/breed/husky/images/random'})
+    
         return (
-            <div className="shop-page">
-                {/* <CollectionsOverview /> */}
-                <button onClick={() => callFnsInSequence(fetchHusky(displayHusky), fetchAki(displayAki), fetchAkita(displayAkita))} >Execute All Fns one after another</button>
-                <Route exact path={`${match.path}`} component={CollectionsOverview}/>
-                <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
-            </div>
+            <Layout showHeader={true}>
+                <div className="shop-page">
+                    {/* <CollectionsOverview /> */}
+                    <button onClick={() => callFnsInSequence(fetchHusky(displayHusky), fetchAki(displayAki), fetchAkita(displayAkita))} >Execute All Fns one after another</button>
+                    <Route exact path={`${match.path}`} component={CollectionsOverview}/>
+                    <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
+                </div>
+                {data && <div>{data.message}</div>}
+            </Layout>
         )
     }
 

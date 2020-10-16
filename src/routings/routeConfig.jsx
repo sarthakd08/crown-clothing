@@ -13,14 +13,14 @@ const Route1 = (props) => {
     )
 }
 
-const hats = (props) => {
-    console.log('hats props', props);
-    return (
-    <div>
-        <h3>hats </h3>
-    </div>
-    )
-}
+// const hats = (props) => {
+//     console.log('hats props', props);
+//     return (
+//     <div>
+//         <h3>hats </h3>
+//     </div>
+//     )
+// }
 
 const routesConfig = [
     {
@@ -35,7 +35,7 @@ const routesConfig = [
       path: '/route1',
       Component: Route1,
       exact: true,
-      name: 'route1',
+      name: 'route1', 
       doNeedStateEngine: true,
       showOnlyToLoggedInUser: false,
     },

@@ -6,6 +6,7 @@ import './App.css';
 
 import Header from './components/header/header.component';
 import Routes from './routings/routes';
+import ErrorHandler from './components/Errorhandler/Errorhandler'
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
 import {selectCurrentUser} from './redux/user/user.selectors';
@@ -39,8 +40,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <Routes isCurrentUser={this.props.user} />
+        {/* <Header /> */}
+        <ErrorHandler>
+          <Routes isCurrentUser={this.props.user} />
+        </ErrorHandler>
       </div>
     );
   }
