@@ -72,11 +72,12 @@ const ShopPage = ({match}) => {
             <Layout showHeader={true}>
                 <div className="shop-page">
                     {/* <CollectionsOverview /> */}
-                    <button onClick={() => callFnsInSequence(fetchHusky(displayHusky), fetchAki(displayAki), fetchAkita(displayAkita))} >Execute All Fns one after another</button>
+                    {/* <button onClick={() => callFnsInSequence(fetchHusky(displayHusky), fetchAki(displayAki), fetchAkita(displayAkita))} >Execute All Fns one after another</button> */}
                     <Route exact path={`${match.path}`} component={CollectionsOverview}/>
                     <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
                 </div>
                 {data && <div>{data.message}</div>}
+
             </Layout>
         )
     }
