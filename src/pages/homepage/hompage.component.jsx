@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import './homepage.styles.scss';
 import Layout from '../../views/Layout/Layout';
-import Directory from '../../components/directory/directory.component'
+
+// import Directory from '../../components/directory/directory.component';
+const Directory = React.lazy(() => import('../../components/directory/directory.component'));
 
 const HomePage = (props) => {
   console.log(props);
@@ -9,7 +11,9 @@ const HomePage = (props) => {
     <Layout showHeader={true}>
       <div className='homepage'>
         {/* <button onClick={() => props.history.push('/shop')}>Navigate to Shop page</button> */}
-        <Directory />
+        <Suspense fallback={<div>Loding Directories...</div>}>
+          <Directory />
+        </Suspense>
       </div>
     </Layout>
   )

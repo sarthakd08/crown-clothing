@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import { connect } from 'react-redux';
 import { Redirect} from 'react-router-dom';
 
@@ -41,9 +41,11 @@ class App extends React.Component {
     return (
       <div className="App">
         {/* <Header /> */}
-        <ErrorHandler>
-          <Routes isCurrentUser={this.props.user} />
-        </ErrorHandler>
+        {/* <Suspense fallback={<div>LOADING CONTENT...</div>}> */}
+          <ErrorHandler>
+            <Routes isCurrentUser={this.props.user} />
+          </ErrorHandler>
+        {/* </Suspense> */}
       </div>
     );
   }

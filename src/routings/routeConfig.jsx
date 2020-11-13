@@ -1,9 +1,17 @@
 import React from 'react';
-import Homepage from '../pages/homepage/hompage.component';
-import ShopPage from '../pages/shop/shop.component';
-import SignInAndSignUpPage from '../pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import CheckoutPage from '../pages/checkout/checkout.component';
-import TestComponent from '../components/TestComponent/TestComponent';
+// import Homepage from '../pages/homepage/hompage.component';
+// import TestComponent from '../components/TestComponent/TestComponent';
+const TestComponent = React.lazy(() => import('../components/TestComponent/TestComponent'))
+// import ShopPage from '../pages/shop/shop.component';
+const ShopPage = React.lazy(() => import('../pages/shop/shop.component'))
+// import SignInAndSignUpPage from '../pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+const SignInAndSignUpPage = React.lazy(() => import('../pages/sign-in-and-sign-up/sign-in-and-sign-up.component'))
+// import CheckoutPage from '../pages/checkout/checkout.component';
+const CheckoutPage = React.lazy(() => import('../pages/checkout/checkout.component'))
+
+
+
+const Homepage = React.lazy(() => import('../pages/homepage/hompage.component'));
 
 const Route1 = (props) => {
     console.log('Route1 props', props);
